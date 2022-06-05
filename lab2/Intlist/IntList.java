@@ -80,20 +80,55 @@ public class IntList {
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
 
-    public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
-    }
+//    public static IntList dcatenate(IntList A, IntList B) {
+//        //TODO:  fill in method
+//        if (A == null) {
+//            return B;
+//        }
+//        IntList p = A;
+//        while (p.rest != null) {
+//            p = p.rest;
+//        }
+//        p.rest = B;
+//        return A;
+//    }
 
+    /** Recursive destruct??. */
+    public static  IntList dcatenate(IntList A, IntList B) {
+        if (A == null) {
+            return B;
+        } else if (A.rest == null) {
+            A.rest = B;
+        }
+        dcatenate(A.rest, B);
+        return A;
+    }
     /**
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
+//    public static IntList catenate(IntList A, IntList B) {
+//        //TODO:  fill in method
+//        if (A == null) {
+//            return B;
+//        }
+//        IntList dummpy = new IntList(A.first, null);
+//        IntList p = dummpy;
+//        while (A.rest != null) {
+//            A = A.rest;
+//            p = new IntList(A.first, p);
+//        }
+//        p.rest = B;
+//        return dummpy;
+//    }
+    /** Recursive non-destruct. */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+       if (A == null) {
+           return B;
+       }
+       IntList p = catenate(A.rest, B);
+       return new IntList(A.first, p);
     }
-
 
 
 
